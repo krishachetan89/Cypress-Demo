@@ -2,6 +2,7 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1.16.1
+  slack: circleci/slack@4.6.2
 executors:
   with-chrome:
     resource_class: small
@@ -21,3 +22,7 @@ workflows:
                 path: cypress/results
             - store_artifacts:
                 path: cypress/screenshots
+      - slack/notify:
+          channel: demo
+          event: pass
+          template: basic_pass_1
