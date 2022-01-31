@@ -22,7 +22,12 @@ workflows:
                 path: cypress/results
             - store_artifacts:
                 path: cypress/screenshots
+      # In the event the deployment has failed, alert the engineering team
       - slack/notify:
-          channel: demo
+          event: fail
+          template: basic_fail_1
+          mentions: "@EngineeringTeam"
+      # When there is a successful deployment, send a notification with a different template.
+      - slack/notify:
           event: pass
-          template: basic_pass_1
+          template: success_tagged_deploy_1
