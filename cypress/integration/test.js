@@ -2,7 +2,7 @@ describe("Verify the website", function() {
   before(function() {
     cy.visit("/")
   })
-  // Loading Test Data file
+  // Loading Test Data file from local
   beforeEach(function() {
     cy.fixture("sample").then(function(sample) {
       this.sample = sample
